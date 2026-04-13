@@ -262,10 +262,6 @@ textarea {
   background: rgba(255, 255, 255, 0.94);
 }
 
-.button-full {
-  width: 100%;
-}
-
 /* Hero composition and background treatments. */
 .hero-section {
   position: relative;
@@ -322,9 +318,9 @@ h3 {
 }
 
 h1 {
-  max-width: 12ch;
-  font-size: clamp(3rem, 5.5vw, 5.2rem);
-  line-height: 0.95;
+  max-width: 14ch;
+  font-size: clamp(2.35rem, 4.2vw, 4rem);
+  line-height: 1;
 }
 
 h2 {
@@ -352,45 +348,60 @@ h3 {
 
 .hero-lead {
   max-width: 36rem;
-  margin: 22px 0 12px;
-  font-size: 1.1rem;
+  margin: 18px 0 10px;
+  font-size: 1rem;
 }
 
 .hero-support {
   max-width: 34rem;
   margin: 0;
+  font-size: 0.98rem;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin: 34px 0 40px;
+  margin: 34px 0 0;
 }
 
 .hero-signals {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
   max-width: 760px;
 }
 
+.section-verticals {
+  padding-top: 28px;
+}
+
+.verticals-grid {
+  max-width: none;
+  margin-top: 34px;
+}
+
 .hero-signals div {
-  padding: 18px 18px 0 0;
+  padding: 20px 18px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(122, 139, 160, 0.18);
+  box-shadow: 0 12px 28px rgba(7, 17, 29, 0.06);
 }
 
 .signal-line {
   display: block;
-  width: 44px;
-  height: 2px;
+  width: 52px;
+  height: 3px;
   margin-bottom: 14px;
   background: linear-gradient(90deg, var(--gold-500), transparent);
 }
 
 .hero-signals strong {
   display: block;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: var(--navy-900);
+  font-size: 1.08rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -398,7 +409,8 @@ h3 {
 .hero-signals p {
   margin: 0;
   color: var(--slate-700);
-  font-size: 0.94rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .hero-visual {
@@ -500,7 +512,6 @@ h3 {
 .focus-card,
 .why-card,
 .team-card,
-.contact-form-wrap,
 .contact-panel,
 .focus-aside {
   border-radius: var(--radius-lg);
@@ -548,6 +559,20 @@ h3 {
 .why-card p,
 .team-card p {
   margin: 16px 0 0;
+}
+
+.simple-list {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.simple-list li {
+  color: var(--slate-700);
+}
+
+.simple-list li + li {
+  margin-top: 10px;
 }
 
 .focus-layout {
@@ -635,8 +660,7 @@ h3 {
   align-items: start;
 }
 
-.contact-panel,
-.contact-form-wrap {
+.contact-panel {
   padding: 34px;
 }
 
@@ -649,66 +673,6 @@ h3 {
 
 .contact-details strong {
   display: block;
-}
-
-.contact-form {
-  display: grid;
-  gap: 20px;
-}
-
-.form-row {
-  display: grid;
-  gap: 8px;
-}
-
-.form-row label {
-  font-weight: 600;
-  color: var(--navy-900);
-}
-
-.form-row input,
-.form-row textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid rgba(122, 139, 160, 0.32);
-  border-radius: 14px;
-  background: rgba(248, 250, 252, 0.92);
-  color: var(--navy-900);
-  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
-}
-
-.form-row input:focus,
-.form-row textarea:focus {
-  outline: none;
-  border-color: rgba(189, 160, 112, 0.86);
-  box-shadow: 0 0 0 4px rgba(189, 160, 112, 0.14);
-  background: var(--white);
-}
-
-.form-row input.is-invalid,
-.form-row textarea.is-invalid {
-  border-color: #a64a4a;
-  box-shadow: 0 0 0 4px rgba(166, 74, 74, 0.12);
-}
-
-.form-error {
-  min-height: 1.1em;
-  color: #a64a4a;
-  font-size: 0.86rem;
-}
-
-.form-status {
-  min-height: 1.4em;
-  margin: 0;
-  font-weight: 500;
-}
-
-.form-status.is-success {
-  color: #1d5b43;
-}
-
-.form-status.is-error {
-  color: #8f3f3f;
 }
 
 .site-footer {
@@ -879,7 +843,6 @@ h3 {
 
   .about-copy,
   .contact-panel,
-  .contact-form-wrap,
   .focus-aside,
   .info-card,
   .focus-card,

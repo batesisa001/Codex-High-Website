@@ -6,8 +6,6 @@ const navLinks = document.querySelectorAll('.site-nav a[href^="#"], .footer-nav 
 const sectionLinks = document.querySelectorAll('.site-nav a[href^="#"]');
 const sections = document.querySelectorAll("main section[id]");
 const revealItems = document.querySelectorAll(".reveal");
-const contactForm = document.getElementById("contactForm");
-const formStatus = document.getElementById("formStatus");
 const yearElement = document.getElementById("year");
 
 // Keep the header compact once the user starts scrolling.
@@ -78,31 +76,6 @@ function updateActiveSection() {
   });
 
   setActiveLink(activeSectionId);
-}
-
-function validateEmail(value) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-}
-
-function showFieldError(field, message) {
-  const errorElement = field.parentElement.querySelector(".form-error");
-  field.classList.add("is-invalid");
-  if (errorElement) {
-    errorElement.textContent = message;
-  }
-}
-
-function clearFieldError(field) {
-  const errorElement = field.parentElement.querySelector(".form-error");
-  field.classList.remove("is-invalid");
-  if (errorElement) {
-    errorElement.textContent = "";
-  }
-}
-
-function clearFormStatus() {
-  formStatus.textContent = "";
-  formStatus.classList.remove("is-success", "is-error");
 }
 
 if (navToggle) {
@@ -178,77 +151,6 @@ if ("IntersectionObserver" in window) {
   });
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
-}
-
-if (contactForm) {
-  // Lightweight front-end validation for a no-backend static form.
-  const fields = ["name", "email", "company", "message"].map((id) =>
-    document.getElementById(id)
-  );
-
-  fields.forEach((field) => {
-    field.addEventListener("input", () => {
-      clearFieldError(field);
-      clearFormStatus();
-    });
-  });
-
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    clearFormStatus();
-
-    const nameField = document.getElementById("name");
-    const emailField = document.getElementById("email");
-    const companyField = document.getElementById("company");
-    const messageField = document.getElementById("message");
-    const values = {
-      name: nameField.value.trim(),
-      email: emailField.value.trim(),
-      company: companyField.value.trim(),
-      message: messageField.value.trim()
-    };
-
-    let hasErrors = false;
-
-    fields.forEach((field) => clearFieldError(field));
-
-    if (!values.name) {
-      showFieldError(nameField, "Please enter your name.");
-      hasErrors = true;
-    }
-
-    if (!values.email) {
-      showFieldError(emailField, "Please enter your email address.");
-      hasErrors = true;
-    } else if (!validateEmail(values.email)) {
-      showFieldError(emailField, "Please enter a valid email address.");
-      hasErrors = true;
-    }
-
-    if (!values.company) {
-      showFieldError(companyField, "Please enter your company name.");
-      hasErrors = true;
-    }
-
-    if (!values.message) {
-      showFieldError(messageField, "Please enter a short message.");
-      hasErrors = true;
-    } else if (values.message.length < 20) {
-      showFieldError(messageField, "Please provide a bit more detail so the inquiry is useful.");
-      hasErrors = true;
-    }
-
-    if (hasErrors) {
-      formStatus.textContent = "Please review the highlighted fields and try again.";
-      formStatus.classList.add("is-error");
-      return;
-    }
-
-    contactForm.reset();
-    formStatus.textContent =
-      "Thank you. Your message has been prepared successfully. Add your real email routing or backend handler when ready to receive submissions.";
-    formStatus.classList.add("is-success");
-  });
 }
 
 if (yearElement) {
